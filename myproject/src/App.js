@@ -1,29 +1,24 @@
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch
-} from 'react-router-dom';
-import Header from './components/Header.js';
-import Home from './components/Home.js';
-import About from './components/About.js';
-import Contact from './components/Contact.js';
+import React from "react";
+import {Routes, Route} from "react-router-dom";
+import Header from "./components/common/Header";
 
-const App = () => (
-<Router>
-  <Header />
-  <Switch>
-    <Route exact path="/">
-      <Home />
-    </Route>
+import MainPage from "./pages/MainPage";
+import MyPage from "./pages/MyPage";
+import Uploadpage from "./pages/UploadPage";
+import LoadingPage from "./pages/LoadingPage";
+import ResultPage from "./pages/ResultPage";
 
-    <Route exact path="/about">
-      <About />
-    </Route>
-
-    <Route exact path="/contact">
-      <Contact />
-    </Route>
-  </Switch>
-</Router>
-);
-export default App;
+function App() {
+    return(
+        <React.Fragment>
+            <Header />
+            <Routes>
+                <Route path="/" element={<MainPage />} />
+                <Route path="/my-page" element={<MyPage/>}/>
+                <Route path="/upload" element={<Uploadpage/>}/>
+                <Route path="/loading" element={<LoadingPage/>}/>
+                <Route path="/result" element={<ResultPage/>}/>
+            </Routes>
+        </React.Fragment>
+    );
+}
